@@ -10,7 +10,24 @@
 </head>
 
 <body>
-    <h1>Weather App</h1>
+    <div class="container">
+        <header class="header">
+            <i class="header__arrow fa fa-arrow-left" aria-hidden="true"></i>
+            <h1 class="header__title">Прогноз погоды</h1>
+        </header>
+        <section class="input-block">
+            <p class="input-block__text">Введите верное название города</p>
+            <input class="input-block__input" type="text" placeholder="Введите название города" required>
+            <div class="input-block__separator"></div>
+            <button class="input-block__button">Настоящее местоположение</button>
+        </section>
+        <section class="weather-block">
+            <div class="weather-block__icon">
+                <img class="img" src="./cloudy-day-3.svg" alt="Weather icon">
+            </div>
+        </section>
+    </div>
+
 </body>
 
 </html>
