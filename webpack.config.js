@@ -67,6 +67,48 @@ module.exports = {
           ),
           to: path.resolve(__dirname, 'dist'),
         },
+        {
+          from: path.resolve(
+            __dirname,
+            'src/style/weather-icon-svg/animated/snowy-3.svg'
+          ),
+          to: path.resolve(__dirname, 'dist'),
+        },
+        {
+          from: path.resolve(
+            __dirname,
+            'src/style/weather-icon-svg/animated/rainy-1.svg'
+          ),
+          to: path.resolve(__dirname, 'dist'),
+        },
+        {
+          from: path.resolve(
+            __dirname,
+            'src/style/weather-icon-svg/animated/rainy-2.svg'
+          ),
+          to: path.resolve(__dirname, 'dist'),
+        },
+        {
+          from: path.resolve(
+            __dirname,
+            'src/style/weather-icon-svg/animated/rainy-3.svg'
+          ),
+          to: path.resolve(__dirname, 'dist'),
+        },
+        {
+          from: path.resolve(
+            __dirname,
+            'src/style/weather-icon-svg/animated/rainy-4.svg'
+          ),
+          to: path.resolve(__dirname, 'dist'),
+        },
+        {
+          from: path.resolve(
+            __dirname,
+            'src/style/weather-icon-svg/animated/rainy-5.svg'
+          ),
+          to: path.resolve(__dirname, 'dist'),
+        },
       ],
     }),
   ],

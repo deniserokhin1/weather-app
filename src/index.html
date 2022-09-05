@@ -11,20 +11,37 @@
 
 <body>
     <div class="container">
-        <header class="header">
-            <i class="header__arrow fa fa-arrow-left" aria-hidden="true"></i>
-            <h1 class="header__title">Прогноз погоды</h1>
-        </header>
-        <section class="input-block">
-            <p class="input-block__text">Введите верное название города</p>
-            <input class="input-block__input" type="text" placeholder="Введите название города" required>
-            <div class="input-block__separator"></div>
-            <button class="input-block__button">Настоящее местоположение</button>
-        </section>
-        <section class="weather-block">
-            <div class="weather-block__icon">
-                <img class="img" src="./cloudy-day-3.svg" alt="Weather icon">
+        <section class="header">
+            <div class="top">
+                <i class="top__arrow fa fa-arrow-circle-o-left" aria-hidden="true"></i>
+                <p class="top__title">выбор города</p>
             </div>
+        </section>
+        <section class="weather-info">
+            <div class="location">
+                <div class="location-top">
+                    <i class="location__icon fa fa-map-marker location__icon" aria-hidden="true"></i>
+                    <h2 class="location__icon__city">Орел, Россия</h2>
+                </div>
+                <div class="location__weather-condition">
+                    Дождь
+                </div>
+            </div>
+            <div class="weather-wrapper">
+                <div class="pic-deg">
+                    <div class="weather-picture">
+                        <img class="weather-picture__img" src=" ./rainy-1.svg" aria-hidden="true">
+                    </div>
+                    <div class="weather-info__real-temp">13<span>°C</span></div>
+                </div>
+
+
+                <div class="details">
+                    <div class="details__feels-like"></div>
+                    <div class="humidity__feels-like"></div>
+                </div>
+            </div>
+
         </section>
     </div>
 
