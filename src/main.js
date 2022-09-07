@@ -1,20 +1,36 @@
 import './style/style.css';
 import { request } from './request';
 import { templateEngine } from './templating-engine';
+import { tamplateDataWeather } from './tamplate-data-weather';
+import { countries } from './country';
 
 const inputBlock = document.querySelector('.input-block');
 const input = inputBlock.querySelector('.input-block__input');
 const inputInfo = inputBlock.querySelector('.input-block__text');
 const buttonGetLocation = inputBlock.querySelector('.input-block__button');
-const weatherBlock = document.querySelector('.weather-info');
+const container = document.querySelector('.container');
+const arrow = document.querySelector('.top__arrow');
+const topTitle = document.querySelector('.top__title');
 
 const KEYAPI = '0ca28cfb4b769f30ddcd87d7a7ae911c';
 const BASEURL = 'https://api.openweathermap.org/data/2.5/weather';
+
+console.log(countries);
 
 input.addEventListener('keyup', (event) => {
   if (event.key === 'Enter' && input.value) {
     searchWeatherByCity(input.value);
   }
+});
+
+arrow.addEventListener('click', () => {
+  const weatherSection = document.querySelector('.weather-info');
+  container.removeChild(weatherSection);
+  topTitle.textContent = 'Погода';
+  arrow.style.display = 'none';
+  inputBlock.classList.remove('hide');
+  input.value = '';
+  input.focus();
 });
 
 buttonGetLocation.addEventListener('click', () => {
@@ -31,18 +47,11 @@ function searchWeatherByCity(city) {
     params: {
       q: city,
       units: 'metric',
+      lang: 'ru',
       appid: KEYAPI,
     },
     onSuccess: (data) => {
-      console.log(data);
-      inputBlock.classList.add('hide');
-      weatherBlock.classList.remove('hide');
-      const { sunrise, sunset } = data.sys;
-      const currentUnixTime = Math.round(new Date().getTime() / 1000);
-      const sunriseTime = getTime(sunrise);
-      const sunsetTime = getTime(sunset);
-      const currentTime = getTime(currentUnixTime);
-      templateEngine(data, sunriseTime, sunsetTime, currentTime);
+      showResult(data);
     },
     onError: (data) => {
       inputInfo.textContent = data;
@@ -50,15 +59,6 @@ function searchWeatherByCity(city) {
       inputInfo.classList.add('input-block__text_error');
     },
   });
-}
-
-function getTime(unixTime) {
-  const date = new Date(unixTime * 1000);
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
-  const seconds = date.getSeconds();
-  const time = hours + ':' + minutes + ':' + seconds;
-  console.log(time);
 }
 
 function searchWeatherByGeolocation() {
@@ -88,13 +88,20 @@ function onSuccessGeo(data) {
       lat: latitude,
       lon: longitude,
       units: 'metric',
+      lang: 'ru',
       appid: KEYAPI,
     },
     onSuccess: (data) => {
-      console.log(data);
-      inputBlock.classList.add('hide');
-      weatherBlock.classList.remove('hide');
+      showResult(data);
     },
     onError: () => {},
   });
+}
+
+function showResult(data) {
+  topTitle.textContent = 'Выбрать другой город';
+  arrow.style.display = 'block';
+  inputBlock.classList.add('hide');
+  container.appendChild(templateEngine(tamplateDataWeather(data)));
+  inputInfo.classList.remove('input-block__text_pending');
 }

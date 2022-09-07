@@ -61,8 +61,8 @@ module.exports = {
           to: path.resolve(__dirname, 'dist'),
         },
         {
-          from: path.resolve(__dirname, 'src/style/weather-icon-svg/animated/'),
-          to: path.resolve(__dirname, 'dist'),
+          from: path.resolve(__dirname, 'src/style/weather-icon-svg/'),
+          to: path.resolve(__dirname, 'dist/weather-icon-svg'),
         },
       ],
     }),

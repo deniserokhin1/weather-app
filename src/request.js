@@ -56,5 +56,5 @@ export function request({
     dataBody = JSON.stringify(body);
   }
 
-  req.send();
+  req.send(dataBody);
 }
