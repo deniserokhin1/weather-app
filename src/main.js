@@ -3,6 +3,7 @@ import { request } from './request';
 import { templateEngine } from './templating-engine';
 import { tamplateDataWeather } from './tamplate-data-weather';
 import { countries } from './country';
+import { KEYAPI } from './key-api';
 
 const inputBlock = document.querySelector('.input-block');
 const input = inputBlock.querySelector('.input-block__input');
@@ -12,7 +13,6 @@ const container = document.querySelector('.container');
 const arrow = document.querySelector('.top__arrow');
 const topTitle = document.querySelector('.top__title');
 
-const KEYAPI = '0ca28cfb4b769f30ddcd87d7a7ae911c';
 const BASEURL = 'https://api.openweathermap.org/data/2.5/weather';
 
 console.log(countries);

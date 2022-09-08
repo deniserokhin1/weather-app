@@ -34,7 +34,7 @@ export const tamplateDataWeather = (data) => ({
                 {
                   tag: 'h3',
                   content: [
-                    Math.floor(data.main.temp),
+                    Math.ceil(data.main.temp),
                     {
                       tag: 'span',
                       content: '°C',
@@ -106,7 +106,7 @@ export const tamplateDataWeather = (data) => ({
             {
               tag: 'div',
               cls: 'feels-like__temp',
-              content: `Ощущается как ${Math.floor(data.main.feels_like)}°C`,
+              content: `Ощущается как ${Math.ceil(data.main.feels_like)}°C`,
             },
           ],
         },
