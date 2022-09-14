@@ -13,7 +13,7 @@
   "rules": {
     "prettier/prettier": "error",
     "camelcase": ["error"],
-    "eqeqeq": ["error", "always"]
-    // "no-console": "error"
+    "eqeqeq": ["error", "always"],
+    "no-console": "error"
   }
 }

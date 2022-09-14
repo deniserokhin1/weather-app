@@ -1,3 +1,5 @@
+import { isNight } from './main';
+
 export function templateEngine(block) {
   if (block === undefined || block === null || block === false) {
     return document.createTextNode('');
@@ -32,7 +34,11 @@ export function templateEngine(block) {
     const keys = Object.keys(block.attrs);
 
     keys.forEach((key) => {
-      element.setAttribute(key, block.attrs[key]);
+      if (key === 'src' && isNight) {
+        element.setAttribute(key, block.attrs[key] + '-night.svg');
+      } else {
+        element.setAttribute(key, block.attrs[key] + '.svg');
+      }
     });
   }
 

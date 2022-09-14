@@ -30,7 +30,7 @@
 }
 
 :root {
-  --color-blue: #67a0e8;
+  --color-blue: #4a98f7;
   --color-white: #fff;
   --color-grey: #bfbfbf;
 }
@@ -201,10 +201,6 @@ body {
   font-weight: 900;
 }
 
-.weather-info {
-  padding-top: 20px;
-}
-
 .pic-deg {
   display: flex;
   flex-direction: column;
@@ -280,7 +276,7 @@ body {
   display: none;
 }
 
-.test {
+.test-img {
   width: 300px;
   height: 300px;
 }

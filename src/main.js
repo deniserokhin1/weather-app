@@ -2,7 +2,6 @@ import './style/style.css';
 import { request } from './request';
 import { templateEngine } from './templating-engine';
 import { tamplateDataWeather } from './tamplate-data-weather';
-import { countries } from './country';
 import { KEYAPI } from './key-api';
 
 const inputBlock = document.querySelector('.input-block');
@@ -13,9 +12,9 @@ const container = document.querySelector('.container');
 const arrow = document.querySelector('.top__arrow');
 const topTitle = document.querySelector('.top__title');
 
-const BASEURL = 'https://api.openweathermap.org/data/2.5/weather';
+export let isNight = undefined;
 
-console.log(countries);
+const BASEURL = 'https://api.openweathermap.org/data/2.5/weather';
 
 input.addEventListener('keyup', (event) => {
   if (event.key === 'Enter' && input.value) {
@@ -51,6 +50,7 @@ function searchWeatherByCity(city) {
       appid: KEYAPI,
     },
     onSuccess: (data) => {
+      timesOfDay(data);
       showResult(data);
     },
     onError: (data) => {
@@ -59,6 +59,15 @@ function searchWeatherByCity(city) {
       inputInfo.classList.add('input-block__text_error');
     },
   });
+}
+
+function timesOfDay(data) {
+  const iconTimesOfDay = data.weather[0].icon[2];
+  if (iconTimesOfDay === 'n') {
+    isNight = true;
+  } else {
+    isNight = false;
+  }
 }
 
 function searchWeatherByGeolocation() {
@@ -92,6 +101,7 @@ function onSuccessGeo(data) {
       appid: KEYAPI,
     },
     onSuccess: (data) => {
+      timesOfDay(data);
       showResult(data);
     },
     onError: () => {},
@@ -99,9 +109,13 @@ function onSuccessGeo(data) {
 }
 
 function showResult(data) {
+  hideInputBlock();
+  container.appendChild(templateEngine(tamplateDataWeather(data)));
+}
+
+function hideInputBlock() {
   topTitle.textContent = 'Выбрать другой город';
   arrow.style.display = 'block';
   inputBlock.classList.add('hide');
-  container.appendChild(templateEngine(tamplateDataWeather(data)));
   inputInfo.classList.remove('input-block__text_pending');
 }
