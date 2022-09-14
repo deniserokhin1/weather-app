@@ -1,4 +1,5 @@
 import './style/style.css';
+import './style/media.css';
 import { request } from './request';
 import { templateEngine } from './templating-engine';
 import { tamplateDataWeather } from './tamplate-data-weather';

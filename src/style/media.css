@@ -1,0 +1,53 @@
+/* stylelint-disable selector-class-pattern */
+@media (max-width: 500px) {
+  .weather-info__real-temp {
+    font-size: 62px;
+  }
+
+  .location__weather-condition {
+    font-size: 14px;
+  }
+
+  .location {
+    margin-bottom: 25px;
+  }
+
+  .location-city {
+    font-size: 14px;
+  }
+
+  .location-city__icon {
+    font-size: 25px;
+  }
+
+  .weather-info__details {
+    font-size: 14px;
+  }
+
+  .weather-info__icon {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .weather-info__details {
+    flex-direction: column;
+  }
+
+  .feels-like {
+    border: none;
+    padding: 5px;
+  }
+
+  .humidity {
+    padding: 5px;
+  }
+
+  .input-block__input {
+    font-size: 15px;
+  }
+
+  .input-block__button {
+    font-size: 15px;
+  }
+}
